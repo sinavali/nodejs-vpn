@@ -15,30 +15,3 @@ const openvpn = openvpnmanager.connect(opts)
 openvpn.on('connected', () => {
   openvpnmanager.authorize(auth);
 });
-
-// emits console output of openvpn instance as a string
-openvpn.on('console-output', output => {
-  console.log(output)
-});
-
-// emits console output of openvpn state as a array
-openvpn.on('state-change', state => {
-  console.log(state)
-});
-
-// emits console output of openvpn state as a string
-openvpn.on('error', error => {
-  console.log(error)
-});
-
-// get all console logs up to this point
-openvpnmanager.getLog(console.log)
-
-// and finally when/if you want to
-openvpnmanager.disconnect();
-
-// emits on disconnect
-openvpn.on('disconnected', () => {
-  // finally destroy the disconnected manager 
-  openvpnmanager.destroy()
-});
